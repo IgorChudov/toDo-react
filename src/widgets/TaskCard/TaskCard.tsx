@@ -4,7 +4,7 @@ import EditIcon from '../../shared/assets/icons/edit.svg?react';
 import { CircularProgressBar } from '../../shared/ui/CircularProgressBar/CircularProgressBar';
 import styles from './TaskCard.module.scss';
 import { getStatusDisplayName, getPriorityDisplayName  } from '../../shared/types/types';
-
+import { Task } from '../../shared/api/serverData/taskList';
 interface TaskCardProps {
   task: Task;
   onEdit: () => void;

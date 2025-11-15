@@ -4,17 +4,9 @@ import { AddEditTaskModal } from '../../features/AddEditTaskModal/AddEditTaskMod
 import { Button } from '../../shared/ui/Button/Button';
 import { DeleteModal } from '../../features/DeleteModal/DeleteModal';
 import { TaskCard } from '../../widgets/TaskCard/TaskCard';
-import { taskList } from '../../shared/api/serverData/taskList';
+import { taskList, Task } from '../../shared/api/serverData/taskList';
 import { useState } from 'react';
-import { Status } from '../../shared/types/types';
-
-interface Task {
-  id: string;
-  title: string;
-  priority: "high" | "medium" | "low";
-  status: string;
-  progress: number;
-}
+import { Status} from '../../shared/types/types';
 
 export const TodoList = () => {
   //состояния модалок
