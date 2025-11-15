@@ -10,9 +10,17 @@ type ButtonProps = {
   onClick: MouseEventHandler<HTMLButtonElement>
 }
 
-export const Button = ({ title, icon, outline }: ButtonProps) => {
+export const Button = ({ title, icon, outline, disabled, onClick }: ButtonProps) => {
   return (
-    <button className={classnames(outline && styles.outline, styles.button)} >
+    <button 
+      onClick={onClick} 
+      className={classnames(
+        outline && styles.outline, 
+        styles.button,
+        disabled && styles.disabled
+      )} 
+      disabled={disabled}
+    >
       {icon && <span className={styles.icon}>{icon}</span>}
       {title}
     </button>
