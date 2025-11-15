@@ -7,7 +7,7 @@ import styles from './AddEditTaskModal.module.scss';
 import "../../shared/styles/index.scss"
 import { Task } from '../../shared/api/serverData/taskList';
 import { useState } from 'react';
-import { Priority, Status } from '../../shared/types/types';
+import { Priority, Status, getPriorityDisplayName } from '../../shared/types/types';
 
 interface AddEditTaskModalProps {
   task: Task | null;
@@ -84,7 +84,7 @@ export const AddEditTaskModal = ({task, onClose, onSave}: AddEditTaskModalProps)
                   )}
                   onClick={() => handlePrioritySelect(priority)}
                 >
-                  {priority.toLowerCase()}
+                  {getPriorityDisplayName(priority)}
                 </li>
               ))}
             </ul>

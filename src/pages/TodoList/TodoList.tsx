@@ -6,7 +6,7 @@ import { DeleteModal } from '../../features/DeleteModal/DeleteModal';
 import { TaskCard } from '../../widgets/TaskCard/TaskCard';
 import { taskList } from '../../shared/api/serverData/taskList';
 import { useState } from 'react';
-
+import { Status } from '../../shared/types/types';
 
 interface Task {
   id: string;
@@ -78,6 +78,42 @@ export const TodoList = () => {
     }
   };
 
+  // изменение статуса задачи
+  const handleStatusChange = (taskId: string) => {
+    setTasks(tasks.map(task => {
+      if (task.id === taskId) {
+
+        let newStatus: Status;
+        let newProgress: number;
+        
+        switch (task.status) {
+          case Status.TODO:
+            newStatus = Status.PROGRESS;
+            newProgress = 50;
+            break;
+          case Status.PROGRESS:
+            newStatus = Status.DONE;
+            newProgress = 100;
+            break;
+          case Status.DONE:
+            newStatus = Status.TODO;
+            newProgress = 0;
+            break;
+          default:
+            newStatus = Status.TODO;
+            newProgress = 0;
+        }
+        
+        return {
+          ...task,
+          status: newStatus,
+          progress: newProgress
+        };
+      }
+      return task;
+    }));
+  };
+
   return (
     <>
       <div className={styles.pageWrapper}>
@@ -95,6 +131,7 @@ export const TodoList = () => {
               task={task} 
               onEdit={() => handlerOpenEditModal(task)}
               onDelete={() => handlerOpenDeleteModal(task)}
+              onStatusChange={() => handleStatusChange(task.id)}
             />
           ))}
         </div>
