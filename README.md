@@ -1,6 +1,4 @@
-
-
-https://igorchudov.github.io/1.4.5/
+https://igorchudov.github.io/toDo-react/
 
 # Скрипты для работы:
 
